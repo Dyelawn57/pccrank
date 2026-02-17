@@ -46,8 +46,8 @@ This tool cannot prevent:
 ## ⚠️ Warning
 - This tool applies **irreversible** changes. Reversal requires Safe Mode or recovery media.
 - **Test on a non-production machine first.**
-- In domain environments, this will override Group Policy — your IT department may not appreciate this on managed machines.
-- Use at your own risk. No warranty provided.
+- In domain environments, this will override Group Policy
+- Use at your own risk.
 
 ## Building from Source
 Requires PowerShell 5+ and PS2EXE module.
