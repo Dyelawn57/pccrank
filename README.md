@@ -1,23 +1,23 @@
-﻿# PCCrank
+# PCCrank
 Keep your PC Cranked. Forever.
 
-This repo contains PowerShell scripts and a GUI to harden Windows against sleep/hibernate/shutdown. Use with care.
+**[⬇️ Download PCCrank.exe](https://github.com/Dyelawn57/pccrank/releases/latest/download/PCCrank.exe)**
 
-## Folders
-- src/ — PowerShell sources (PCCrank.ps1, GUI script, helpers)
-- ssets/ — icons/images (not required to run)
-- dist/ — optional compiled EXEs (ignored by git by default)
+A Windows tool that prevents your PC from ever sleeping, hibernating, or shutting down.
 
-## Build
+## Usage
+1. Download `PCCrank.exe` from the link above
+2. Run as Administrator
+3. Select Local or Remote target
+4. Click **CRANK**
+
+## ⚠️ Warning
+This tool applies **irreversible** changes. Reversal may require Safe Mode or recovery media.
+
+## Building from Source
 Requires PowerShell 5+ and PS2EXE module.
 
-`powershell
+```powershell
 Install-Module ps2exe -Scope CurrentUser -Force
-# GUI build (outputs to dist)
- = Join-Path  'src\PCCrank_v2.ps1'
- = Join-Path  'dist\PCCrank.exe'
-Invoke-PS2EXE -InputFile  -OutputFile  -NoConsole -Title 'PCCrank' -RequireAdmin
-`
-
-## WARNING
-Reversing the lockdown may require Safe Mode or recovery media.
+Invoke-PS2EXE -InputFile src\PCCrank.ps1 -OutputFile PCCrank.exe -NoConsole -RequireAdmin
+```
