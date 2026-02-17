@@ -1,0 +1,9 @@
+﻿# Build artifacts
+/dist/
+*.exe
+*.ico
+*.png
+# VSCode/Editor
+.vscode/
+.DS_Store
+Thumbs.db
