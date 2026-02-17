@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    PCCrank - Keeps your PC cranked and running forever
+    PCCrank - Keeps your PC Cranked and running forever
     Prevents a Windows computer from ever shutting down, sleeping, or hibernating.
 #>
 
@@ -20,33 +20,37 @@ $form.ForeColor = [System.Drawing.Color]::White
 # Title label
 $titleLabel = New-Object System.Windows.Forms.Label
 $titleLabel.Text = "PCCrank"
-$titleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 24, [System.Drawing.FontStyle]::Bold)
-$titleLabel.ForeColor = [System.Drawing.Color]::FromArgb(255, 90, 60)
-$titleLabel.AutoSize = $true
-$titleLabel.Location = New-Object System.Drawing.Point(240, 12)
+$titleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 28, [System.Drawing.FontStyle]::Bold)
+$titleLabel.ForeColor = [System.Drawing.Color]::FromArgb(220, 70, 50)
+$titleLabel.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
+$titleLabel.Size = New-Object System.Drawing.Size(580, 45)
+$titleLabel.Location = New-Object System.Drawing.Point(15, 8)
 $form.Controls.Add($titleLabel)
 
 # Subtitle
 $subtitleLabel = New-Object System.Windows.Forms.Label
-$subtitleLabel.Text = "Keep your PC cranked. Forever."
+$subtitleLabel.Text = "Keep your PC Cranked. Forever."
 $subtitleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 10)
-$subtitleLabel.ForeColor = [System.Drawing.Color]::Gray
-$subtitleLabel.AutoSize = $true
-$subtitleLabel.Location = New-Object System.Drawing.Point(210, 55)
+$subtitleLabel.ForeColor = [System.Drawing.Color]::FromArgb(140, 140, 140)
+$subtitleLabel.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
+$subtitleLabel.Size = New-Object System.Drawing.Size(580, 20)
+$subtitleLabel.Location = New-Object System.Drawing.Point(15, 52)
 $form.Controls.Add($subtitleLabel)
 
 # Warning panel
 $warningPanel = New-Object System.Windows.Forms.Panel
-$warningPanel.Size = New-Object System.Drawing.Size(570, 60)
-$warningPanel.Location = New-Object System.Drawing.Point(20, 85)
+$warningPanel.Size = New-Object System.Drawing.Size(570, 70)
+$warningPanel.Location = New-Object System.Drawing.Point(20, 80)
 $warningPanel.BackColor = [System.Drawing.Color]::FromArgb(60, 30, 30)
 $form.Controls.Add($warningPanel)
 
 $warningLabel = New-Object System.Windows.Forms.Label
-$warningLabel.Text = "WARNING: This process is extremely difficult to reverse. Once applied, the target`nmachine will resist all shutdown attempts. Reversal requires Safe Mode or recovery`nenvironment access. Only proceed if you understand the consequences."
+$warningLabel.Text = "WARNING: This process is extremely difficult to reverse. Once applied, the target machine will resist all shutdown attempts. Reversal requires Safe Mode or recovery environment access. Only proceed if you understand the consequences."
 $warningLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9)
 $warningLabel.ForeColor = [System.Drawing.Color]::FromArgb(255, 180, 180)
 $warningLabel.AutoSize = $true
+# Constrain width so the label wraps inside the panel (570px panel - 2*10px padding)
+$warningLabel.MaximumSize = New-Object System.Drawing.Size(550, 0)
 $warningLabel.Location = New-Object System.Drawing.Point(10, 8)
 $warningPanel.Controls.Add($warningLabel)
 
@@ -56,7 +60,7 @@ $targetGroup.Text = "Target"
 $targetGroup.Font = New-Object System.Drawing.Font("Segoe UI", 9)
 $targetGroup.ForeColor = [System.Drawing.Color]::White
 $targetGroup.Size = New-Object System.Drawing.Size(570, 75)
-$targetGroup.Location = New-Object System.Drawing.Point(20, 155)
+$targetGroup.Location = New-Object System.Drawing.Point(20, 160)
 $form.Controls.Add($targetGroup)
 
 # Local machine radio
@@ -101,15 +105,15 @@ $localRadio.Add_CheckedChanged({
 
 # Buttons panel
 $buttonPanel = New-Object System.Windows.Forms.Panel
-$buttonPanel.Size = New-Object System.Drawing.Size(570, 40)
-$buttonPanel.Location = New-Object System.Drawing.Point(20, 235)
+$buttonPanel.Size = New-Object System.Drawing.Size(570, 45)
+$buttonPanel.Location = New-Object System.Drawing.Point(20, 245)
 $form.Controls.Add($buttonPanel)
 
 # Test Connection button
 $testButton = New-Object System.Windows.Forms.Button
 $testButton.Text = "Test Connection"
 $testButton.Font = New-Object System.Drawing.Font("Segoe UI", 9)
-$testButton.Size = New-Object System.Drawing.Size(130, 35)
+$testButton.Size = New-Object System.Drawing.Size(130, 38)
 $testButton.Location = New-Object System.Drawing.Point(0, 0)
 $testButton.BackColor = [System.Drawing.Color]::FromArgb(60, 60, 60)
 $testButton.ForeColor = [System.Drawing.Color]::White
@@ -117,12 +121,12 @@ $testButton.FlatStyle = "Flat"
 $testButton.Cursor = "Hand"
 $buttonPanel.Controls.Add($testButton)
 
-# CRANK IT button
+# CRANK button
 $crankButton = New-Object System.Windows.Forms.Button
-$crankButton.Text = "CRANK IT"
-$crankButton.Font = New-Object System.Drawing.Font("Segoe UI", 11, [System.Drawing.FontStyle]::Bold)
-$crankButton.Size = New-Object System.Drawing.Size(140, 35)
-$crankButton.Location = New-Object System.Drawing.Point(430, 0)
+$crankButton.Text = "CRANK"
+$crankButton.Font = New-Object System.Drawing.Font("Segoe UI", 12, [System.Drawing.FontStyle]::Bold)
+$crankButton.Size = New-Object System.Drawing.Size(130, 38)
+$crankButton.Location = New-Object System.Drawing.Point(440, 0)
 $crankButton.BackColor = [System.Drawing.Color]::FromArgb(180, 50, 30)
 $crankButton.ForeColor = [System.Drawing.Color]::White
 $crankButton.FlatStyle = "Flat"
@@ -132,15 +136,15 @@ $buttonPanel.Controls.Add($crankButton)
 # Progress bar
 $progressBar = New-Object System.Windows.Forms.ProgressBar
 $progressBar.Size = New-Object System.Drawing.Size(570, 18)
-$progressBar.Location = New-Object System.Drawing.Point(20, 280)
+$progressBar.Location = New-Object System.Drawing.Point(20, 295)
 $progressBar.Style = "Continuous"
 $form.Controls.Add($progressBar)
 
 # Output textbox
 $outputBox = New-Object System.Windows.Forms.RichTextBox
 $outputBox.Font = New-Object System.Drawing.Font("Consolas", 9)
-$outputBox.Size = New-Object System.Drawing.Size(570, 200)
-$outputBox.Location = New-Object System.Drawing.Point(20, 305)
+$outputBox.Size = New-Object System.Drawing.Size(570, 190)
+$outputBox.Location = New-Object System.Drawing.Point(20, 320)
 $outputBox.BackColor = [System.Drawing.Color]::FromArgb(15, 15, 15)
 $outputBox.ForeColor = [System.Drawing.Color]::LightGray
 $outputBox.BorderStyle = "None"
@@ -149,11 +153,11 @@ $form.Controls.Add($outputBox)
 
 # Status label
 $statusLabel = New-Object System.Windows.Forms.Label
-$statusLabel.Text = "Ready to crank"
+$statusLabel.Text = "Ready to Crank"
 $statusLabel.Font = New-Object System.Drawing.Font("Segoe UI", 9)
 $statusLabel.ForeColor = [System.Drawing.Color]::Gray
 $statusLabel.AutoSize = $true
-$statusLabel.Location = New-Object System.Drawing.Point(20, 515)
+$statusLabel.Location = New-Object System.Drawing.Point(20, 530)
 $form.Controls.Add($statusLabel)
 
 # Version label
@@ -162,7 +166,7 @@ $versionLabel.Text = "v1.0"
 $versionLabel.Font = New-Object System.Drawing.Font("Segoe UI", 8)
 $versionLabel.ForeColor = [System.Drawing.Color]::FromArgb(80, 80, 80)
 $versionLabel.AutoSize = $true
-$versionLabel.Location = New-Object System.Drawing.Point(560, 515)
+$versionLabel.Location = New-Object System.Drawing.Point(565, 530)
 $form.Controls.Add($versionLabel)
 
 # Function to write colored output
@@ -383,7 +387,7 @@ $testButton.Add_Click({
     }
 })
 
-# CRANK IT button click
+# CRANK button click
 $crankButton.Add_Click({
     $computer = Get-TargetComputer
     if ([string]::IsNullOrEmpty($computer)) {
@@ -392,7 +396,7 @@ $crankButton.Add_Click({
     }
     
     # Confirmation dialog
-    $confirmMsg = "You are about to CRANK: $computer`n`n"
+    $confirmMsg = "You are about to Crank: $computer`n`n"
     $confirmMsg += "This will make the machine extremely resistant to shutdown.`n"
     $confirmMsg += "Reversal requires Safe Mode or recovery environment access.`n`n"
     $confirmMsg += "Are you absolutely sure you want to proceed?"
@@ -506,12 +510,12 @@ $crankButton.Add_Click({
         $progressBar.Value = 100
         Write-Output ""
         Write-Output "============================================" "Orange"
-        Write-Output "  $computer is now CRANKED" "Orange"
+        Write-Output "  $computer is now Cranked" "Orange"
         Write-Output "  Only way to stop it: PULL THE PLUG" "Orange"
         Write-Output "============================================" "Orange"
         
-        $statusLabel.Text = "CRANKED!"
-        [System.Windows.Forms.MessageBox]::Show("$computer is now CRANKED!`n`nThe only way to turn it off is to physically unplug it.", "PCCrank Complete", "OK", "Information")
+        $statusLabel.Text = "Cranked!"
+        [System.Windows.Forms.MessageBox]::Show("$computer is now Cranked!`n`nThe only way to turn it off is to physically unplug it.", "PCCrank Complete", "OK", "Information")
         
     } catch {
         Write-Output "[!] Error: $_" "Red"
